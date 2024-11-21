@@ -2,29 +2,135 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/lblPrice"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="304dp"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/txtName"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="61dp"
+        android:layout_marginEnd="61dp"
+        android:layout_marginBottom="8dp"
+        android:text="Name"
+        app:layout_constraintBottom_toTopOf="@+id/lblSymbol"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spCoinChoice" />
 
-    <Button
-        android:id="@+id/btnGetCatData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get Text Data"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+    <Spinner
+        android:id="@+id/spCoinChoice"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="86dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="16dp"
+        android:background="#03A9F4"
+        app:layout_constraintBottom_toTopOf="@+id/txtName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSymbol"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="137dp"
+        android:layout_marginBottom="3dp"
+        android:text="Symbol"
+        app:layout_constraintBottom_toBottomOf="@+id/lblSymbol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblSymbol"
+        app:layout_constraintTop_toTopOf="@+id/lblSymbol" />
+
+    <TextView
+        android:id="@+id/txtSupply"
+        android:layout_width="0dp"
+        android:layout_height="21dp"
+        android:layout_marginEnd="134dp"
+        android:text="Supply"
+        app:layout_constraintBaseline_toBaselineOf="@+id/lblSupply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblSupply" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        android:layout_width="0dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="141dp"
+        android:layout_marginBottom="20dp"
+        android:text="Price"
+        app:layout_constraintBottom_toTopOf="@+id/lblPercChange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/lblSupply" />
+
+    <TextView
+        android:id="@+id/txtPercChange"
+        android:layout_width="0dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="146dp"
+        android:text="percChange"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lblPercChange"
+        app:layout_constraintTop_toTopOf="@+id/lblPercChange" />
+
+    <TextView
+        android:id="@+id/lblSymbol"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="75dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="18dp"
+        android:text="Symbol:"
+        app:layout_constraintBottom_toTopOf="@+id/lblSupply"
+        app:layout_constraintEnd_toStartOf="@+id/txtSymbol"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+    <TextView
+        android:id="@+id/lblSupply"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="17dp"
+        android:text="Supply:"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/txtSupply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSymbol" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="21dp"
+        android:text="Price:"
+        app:layout_constraintBottom_toTopOf="@+id/lblPercChange"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblSupply" />
+
+    <TextView
+        android:id="@+id/lblPercChange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="404dp"
+        android:text="% Change"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtPercChange"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
