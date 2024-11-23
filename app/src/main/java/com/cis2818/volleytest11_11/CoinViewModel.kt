@@ -1,21 +1,21 @@
 package com.cis2818.volleytest11_11
+import android.icu.text.DecimalFormat
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import org.json.JSONArray
 import org.json.JSONObject
-import kotlin.random.Random
+import kotlin.math.roundToInt
 
-
+/** CLASS: CoinViewModel **/
 class CoinViewModel : ViewModel() {
 
     private lateinit var currList : ArrayList<Currency>
 
        /**
-     * Function: setCoinData
-     */
-       fun setCoinData(inputJArray : JSONArray) {
-
-
+        * Function: setCoinData
+       */
+       fun setCoinData(inputJArray : JSONArray)
+       {
         // Creating a copy
         var currName: String
         var symbol: String
@@ -26,19 +26,38 @@ class CoinViewModel : ViewModel() {
 
         currList = ArrayList<Currency>()
 
-
         for (i in 0 until inputJArray.length()) {
 
-
             //Get the current JSONObject
-            var dataJsonObject: JSONObject = inputJArray.getJSONObject(i)
+            val dataJsonObject: JSONObject = inputJArray.getJSONObject(i)
+
+            //Fix Supply
+            val stringSupply =  dataJsonObject.getString("supply")
+            val floatValue = stringSupply.toFloat()
+            val adjFloat = floatValue.roundToInt()
+            val finalStringSupply = adjFloat.toString()
+
+            //Fix Price
+            val stringPrice =  dataJsonObject.getString("priceUsd")
+            val floatPrice = stringPrice.toFloat()
+            val decimalFormat = DecimalFormat("#.##")
+            val adjFloatPrice = decimalFormat.format(floatPrice)
+            var roundedPrice = adjFloatPrice.toString()
+            roundedPrice = "$ " + roundedPrice
+
+            //Fix Percentage
+            val stringPerc =  dataJsonObject.getString("changePercent24Hr")
+            val floatPerc = stringPerc.toFloat()
+            val adjFloatPerc = decimalFormat.format(floatPerc)
+            var roundedPerc = adjFloatPerc.toString()
+            roundedPerc =  roundedPerc + " %"
 
             //Set values
             currName = dataJsonObject.getString("name")
             symbol = dataJsonObject.getString("symbol")
-            supply = dataJsonObject.getString("supply")
-            price = dataJsonObject.getString("priceUsd")
-            percChange = dataJsonObject.getString("changePercent24Hr")
+            supply = finalStringSupply
+            price = roundedPrice
+            percChange = roundedPerc
 
             //Create Instance of Currency
             currency = Currency(currName, symbol, supply, price, percChange)
@@ -47,8 +66,7 @@ class CoinViewModel : ViewModel() {
 
         }//end for loop
 
-
-    }//end setCoinData
+    }//end Function: setCoinData
 
         /**
          * Function: getACurrency()
@@ -56,32 +74,31 @@ class CoinViewModel : ViewModel() {
         fun getACurrency(index : Int): Currency
         {
             // Creating a copy
-            var currObj: Currency
-            var currObjReturn : Currency
+            val currObj: Currency
+            val currObjReturn : Currency
 
             currObj = currList.get(index)
 
             //Set values
-            var currName = currObj.currName
-            var symbol = currObj.symbol
-            var supply = currObj.supply
-            var price = currObj.price
-            var percChange = currObj.percChange
+            val currName = currObj.currName
+            val symbol = currObj.symbol
+            val supply = currObj.supply
+            val price = currObj.price
+            val percChange = currObj.percChange
 
             //Create Instance of Currency
             currObjReturn = Currency(currName, symbol, supply, price, percChange)
 
             return currObjReturn
-        }//end getACurrency
-
+        }//end Function: getACurrency
 
        /**
      * Function: getLength()  Return the length of the objects
      */
-       fun getLength(): Int {
+       fun getLength(): Int
+       {
             val length = currList.size
             return length
-    }//end getLength
+    }//end function: getLength
 
-
-}//end class ConViewModel
+}//end class CoinViewModel
